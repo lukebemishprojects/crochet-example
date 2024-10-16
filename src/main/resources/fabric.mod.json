@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "crochet-example",
+  "version": "${version}",
+  "name": "Example mod",
+  "entrypoints": {
+    "main": [
+      "com.example.ExampleMod"
+    ]
+  }
+}

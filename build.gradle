@@ -1,0 +1,51 @@
+import dev.lukebemish.crochet.model.FabricInstallation
+
+plugins {
+    alias libs.plugins.crochet
+    id 'maven-publish'
+}
+
+group = 'com.example'
+version = '1.0.0'
+
+crochet {
+    installations {
+        register('fabric', FabricInstallation) {
+            minecraft = libs.versions.minecraft
+
+            dependencies {
+                loader libs.fabric.loader
+            }
+
+            forFeature(project.sourceSets.main) {
+                modImplementation libs.fabric.api
+            }
+        }
+    }
+    runs {
+        client {
+            client installations.fabric
+            implementation project()
+        }
+        server {
+            server installations.fabric
+            implementation project()
+        }
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+processResources {
+    inputs.property "version", project.version as String
+
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version as String
+    }
+}
