@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "crochet-example",
+  "id": "crochet_example",
   "version": "${version}",
   "name": "Example mod",
   "entrypoints": {

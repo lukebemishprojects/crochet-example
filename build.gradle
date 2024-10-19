@@ -9,17 +9,15 @@ group = 'com.example'
 version = '1.0.0'
 
 crochet {
-    installations {
-        register('fabric', FabricInstallation) {
-            minecraft = libs.versions.minecraft
+    fabric('fabric') {
+        minecraft = libs.versions.minecraft
 
-            dependencies {
-                loader libs.fabric.loader
-            }
+        dependencies {
+            loader libs.fabric.loader
+        }
 
-            forFeature(project.sourceSets.main) {
-                modImplementation libs.fabric.api
-            }
+        forFeature(project.sourceSets.main) {
+            modImplementation libs.fabric.api
         }
     }
     runs {
